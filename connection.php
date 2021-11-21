@@ -1,10 +1,11 @@
 <?php
-$hostname = "localhost";
-$database = "indonetsource";
-$username = "root";
-$password = "";
-$connect = mysqli_connect($hostname, $username, $password, $database);
-// script cek koneksi   
-if (!$connect) {
-    die("Koneksi Tidak Berhasil: " . mysqli_connect_error());
-}
+
+$servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbName = "pwb";
+
+    // Create connection
+    $con = mysqli_connect($servername, $username, $password, $dbName);
+
+?>

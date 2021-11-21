@@ -1,13 +1,8 @@
 <?php
     session_start();
-    header('location:index.php');
-    $servername = "sql310.epizy.com";
-    $username = "epiz_30271228";
-    $password = "LDpmzP3sJrcS";
-    $dbName = "epiz_30271228_naufal";
-
-    // Create connection
-    $con = mysqli_connect($servername, $username, $password, $dbName);
+    header('location:login.html');
+    
+    require_once "connection.php";
 
     $name = $_POST['user'];
     $pass = $_POST['password'];
