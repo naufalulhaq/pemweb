@@ -1,91 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabel</title>
-    <link rel="stylesheet" href="tabel.css">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
 
-</head>
-<body>
-    <div class="container">
-        <img height="160px" class="logo" src="logo.png" alt="">
-        <p class="tanggal">
-            19/09/2021
-        </p>
-        <div class="row">
-            <div class="col s3">
-                <div align = "center">
-                <div class="mobil">
-                    <div class="biru" style="background-color:rgb(124, 155, 214); width:30%; height:30px;"></div>
-                    <p>Mobil 1</p>
-                    <div class="hijau" style="background-color:#7ce46f; width:30%; height:30px;"></div>
-                    <p>Mobil 2</p>
-                  </div>
-            </div>
-            <div class="center-align">
-                <input type="submit" class="buttongraph" value="Graph"><br>
-                <input type="submit" class="buttonexpert" value="Expert"><br>
-                <input type="submit" class="buttonlogout" value="Logout">
-            </div>
-        </div>
-            <div class="col s8">
-                <div class="responsive-table">
-                    <div class="tabel">
-                        <table>
-                            <thead>
-                                <tr class="head">
-                                    <th>No</th>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Release Year</th>
-                                    <th>Sale</th>
-                                </tr>
-                            </thead>
-                            <tbody class="books-table">
-                            <!-- diisi data dari js -->
-                            <script>
-                                // Handler Data from API
-                                var requestOptions = {
-                                  method: "GET",
-                                  redirect: "follow",
-                                };
-                        
-                                const tbodyDataEl = document.querySelector(".books-table");
-                                fetch("table.php", requestOptions)
-                                .then((response) => response.json())
-                                .then((result) => {
-                                  result.data.books.forEach((element, index) => {
-                                    const trEl = document.createElement("tr");
-                                    const tdNoEl = document.createElement("td");
-                                    const tdOnEl = document.createElement("td");
-                                    const tdOffEl = document.createElement("td");
-                                    const tdActionByEl = document.createElement("td");
-                                    const tdReasonEl = document.createElement("td");
-                                    tdNoEl.innerText = index + 1;
-                                    tdOnEl.innerText = element.Title;
-                                    tdOffEl.innerText = element.Author;
-                                    tdActionByEl.innerText = element.ReleaseYear;
-                                    tdReasonEl.innerText = element.Sale;
-                                    trEl.append(tdNoEl, tdOnEl, tdOffEl, tdActionByEl, tdReasonEl);
-                                    tbodyDataEl.append(trEl);
-                                  });
-                                  
-                                })
-                                .catch((error) => console.log("error", error));
-                                </script>
-                        </tbody>
-                        </table>
-                    </div>
-                </div>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    <div class="row">
+        <div class="col s12">
+            <img class="col s4 responsive-img" style="width: 250px;" src="images/logo.png" />
+            <div class="col s3 offset-s9  card-panel">
+                <script> document.write(new Date().toLocaleDateString()); </script>
             </div>
         </div>
     </div>
-    
-    
-</body>
+    <div class="row">
+        <div class="col s4 center-align">
+            <div class="card-panel indigo lighten-2"></div>
+            <p>Mobil 1</p>
+            <div class="card-panel green lighten-2"></div>
+            <p>Mobil 1</p>
+            <a href="#" class="btn yellow black-text">Graph</a><br/><br/>
+            <a href="#" class="btn blue black-text" class="row">Export</a><br/><br/>
+            <a href="#" class="btn red black-text" class="row">Logout</a>
+        </div>
+        <div class="col s8 center-align">
+            <table class="GeneratedTable">
+              <thead>
+                <tr class="head">
+                    <th>No</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Release Year</th>
+                    <th>Sale</th>
+                </tr>
+            </thead>
+            <tbody class="books-table">
+            <!-- diisi data dari js -->
+            <script>
+                // Handler Data from API
+                var requestOptions = {
+                  method: "GET",
+                  redirect: "follow",
+                };
+        
+                const tbodyDataEl = document.querySelector(".books-table");
+                fetch("table.php", requestOptions)
+                .then((response) => response.json())
+                .then((result) => {
+                  result.data.books.forEach((element, index) => {
+                    const trEl = document.createElement("tr");
+                    const td_no_El = document.createElement("td");
+                    const td_title_El = document.createElement("td");
+                    const td_author_El = document.createElement("td");
+                    const td_year_El = document.createElement("td");
+                    const td_sale_El = document.createElement("td");
+                    td_no_El.innerText = index + 1;
+                    td_title_El.innerText = element.Title;
+                    td_author_El.innerText = element.Author;
+                    td_year_El.innerText = element.ReleaseYear;
+                    td_sale_El.innerText = element.Sale;
+                    trEl.append(td_no_El, td_title_El, td_author_El, td_year_El, td_sale_El);
+                    tbodyDataEl.append(trEl);
+                  });
+                  
+                })
+                .catch((error) => console.log("error", error));
+                </script>
+        </tbody>
+            </table>
+        </div>
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+  </body>
 </html>

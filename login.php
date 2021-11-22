@@ -4,7 +4,7 @@ session_start();
 
 require_once "connection.php";
 
-$name = mysqli_real_escape_string($con, $_POST['user']);
+$name = mysqli_real_escape_string($con, $_POST['username']);
 $pass = mysqli_real_escape_string($con, $_POST['password']);
 
 $s = "SELECT * FROM user_table WHERE name = '$name' AND password= '$pass'"; //  username = ' or 1=1 #

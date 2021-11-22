@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Grafik </title> 
+
+ <link rel="stylesheet" href="grafik.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+  <div class="header">
+   <img height="100px" src="image/logo.png" alt="">
+   <p class="tgl">
+    17/09/2021
+   </p>
+  </div>
+  <div class="grafik">
+   <div class="ukuran">
+    <canvas id="myChart"></canvas>
+   </div>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+ 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+
+   <script type="text/javascript" src="chartjs/Chart.js"></script>
+   <script>
+    // Initialization data from DB
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+  };
+  fetch("graphic.php", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result)
+        let jumlah = [];
+        result.data.forEach((element) => {
+          jumlah.push(element["jumlah"]);
+        });
+        let tahun = [];
+        result.data.forEach((element) => {
+          tahun.push(element["tahun"]);
+        });
+
+    // Setup
+    const labels = tahun;
+
+    const data = {
+    labels: labels,
+    datasets: [{
+     label: 'Jumlah orang mati',
+     data: jumlah,
+     backgroundColor: [
+     '#81d4fa'
+     ],
+     borderColor: [
+     '#81d4fa'
+     ],
+     borderWidth: 2
+    }]
+    };
+
+    // Config
+    const config = {
+    type: 'bar',
+    data: data,
+    options: {
+     scales: {
+     y: {
+      beginAtZero: true
+     }
+     }
+    },
+    };
+
+    // Render / show the chart
+    var myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+    );
+  })
+    .catch((error) => console.log("error", error));
+   </script>
+   <!--JavaScript at end of body for optimized loading-->
+   <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+  
+  </body>
+</html>
