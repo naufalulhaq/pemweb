@@ -39,40 +39,40 @@
                     <th>Release Year</th>
                     <th>Sale</th>
                 </tr>
-            </thead>
-            <tbody class="books-table">
-            <!-- diisi data dari js -->
-            <script>
-                // Handler Data from API
-                var requestOptions = {
-                  method: "GET",
-                  redirect: "follow",
-                };
-        
-                const tbodyDataEl = document.querySelector(".books-table");
-                fetch("table.php", requestOptions)
-                .then((response) => response.json())
-                .then((result) => {
-                  result.data.books.forEach((element, index) => {
-                    const trEl = document.createElement("tr");
-                    const td_no_El = document.createElement("td");
-                    const td_title_El = document.createElement("td");
-                    const td_author_El = document.createElement("td");
-                    const td_year_El = document.createElement("td");
-                    const td_sale_El = document.createElement("td");
-                    td_no_El.innerText = index + 1;
-                    td_title_El.innerText = element.Title;
-                    td_author_El.innerText = element.Author;
-                    td_year_El.innerText = element.ReleaseYear;
-                    td_sale_El.innerText = element.Sale;
-                    trEl.append(td_no_El, td_title_El, td_author_El, td_year_El, td_sale_El);
-                    tbodyDataEl.append(trEl);
-                  });
-                  
-                })
-                .catch((error) => console.log("error", error));
+              </thead>
+              <tbody class="books-table">
+                <!-- diisi data dari js -->
+                <script>
+                  // Handler Data from API
+                  var requestOptions = {
+                    method: "GET",
+                    redirect: "follow",
+                  };
+          
+                  const tbodyDataEl = document.querySelector(".books-table");
+                  fetch("table.php", requestOptions)
+                  .then((response) => response.json())
+                  .then((result) => {
+                    result.data.books.forEach((element, index) => {
+                      const trEl = document.createElement("tr");
+                      const td_no_El = document.createElement("td");
+                      const td_title_El = document.createElement("td");
+                      const td_author_El = document.createElement("td");
+                      const td_year_El = document.createElement("td");
+                      const td_sale_El = document.createElement("td");
+                      td_no_El.innerText = index + 1;
+                      td_title_El.innerText = element.Title;
+                      td_author_El.innerText = element.Author;
+                      td_year_El.innerText = element.ReleaseYear;
+                      td_sale_El.innerText = element.Sale;
+                      trEl.append(td_no_El, td_title_El, td_author_El, td_year_El, td_sale_El);
+                      tbodyDataEl.append(trEl);
+                    });
+                    
+                  })
+                  .catch((error) => console.log("error", error));
                 </script>
-        </tbody>
+              </tbody>
             </table>
         </div>
     </div>
