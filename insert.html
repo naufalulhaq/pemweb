@@ -10,7 +10,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Insert Book Data</title>
   </head>
-
+  <nav>
+    <div class="nav-wrapper blue darken-2">
+        <!--<a href="index.html" class="brand-logo">Logo</a>-->
+        <img class="responsive-img" style="height: 55px;" src="images/itslogowhite.png" />
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="dashboard.html">Home</a></li>
+            <li><a href="table.html">Table</a></li>
+            <li><a href="graphic.html">Graphic</a></li>
+            <li><a href="index.html">Log Out</a></li>
+        </ul>
+    </div>
+    </nav>
     <body>
         <div class="section"></div>
         <main>
@@ -19,11 +30,8 @@
             <div class="section"></div>
       
             <div class="container">
-              <div class="login-box" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
-                
-                <img class="responsive-img" style="width: 250px;" src="images/itslogo.png" />
-
-                <div class="row">Register Here :</div>
+              <div class="s8 offset-2" style="padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+                <div class="row">Insert new data here:</div>
 
                 <form action="insert.php" class="col s12" method="post">
                         
@@ -54,7 +62,7 @@
                   <br />
                   <center>
                     <div class='row'>
-                      <button type='submit' name='btn_login' class='col s4 offset-s4 btn btn-small waves-effect black'>Insert</button>
+                      <button type='submit' name='btn_login' class='col s4 offset-s4 btn btn-small waves-effect blue darken-2'>Insert</button>
                     </div>
                   </center>
                 </form>

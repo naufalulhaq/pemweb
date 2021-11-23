@@ -16,7 +16,7 @@ $num = mysqli_num_rows($result);
 if ($num > 0) {
     header('location:dashboard.html');
 } else {
-    header('location:failed.php');
+    header('location:login.html');
 }
 
 ?>
